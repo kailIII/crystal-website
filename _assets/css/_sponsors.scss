@@ -1,5 +1,6 @@
 table {
   border-color: $light-gray;
+  min-width: 280px;
   th {
     color: $black;
   }
@@ -9,6 +10,7 @@ table {
         border-radius: 50%;
         width: 40px;
         height: 40px;
+        min-width: 40px;
         @include grayscale(100%);
         @include opacity(60);
         object-fit: contain;
@@ -42,6 +44,15 @@ table {
       position: absolute;
       bottom: -3px;
       right: -4px;
+    }
+  }
+  .sponsor-mobile {
+    padding: .6rem .3rem;
+    .logo-container {
+      min-width: 30px;
+    }
+    .row {
+      margin-bottom: 0;
     }
   }
 }

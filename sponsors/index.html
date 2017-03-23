@@ -9,7 +9,7 @@ subtitle: These are the companies and individuals contributing a monthly amount 
   <div class="row">
     <div class="col s12 m8">
       <table class="bordered">
-        <thead>
+        <thead class="hide-on-small-only">
           <th></th>
           <th>Supporter</th>
           <th>This month</th>
@@ -19,7 +19,7 @@ subtitle: These are the companies and individuals contributing a monthly amount 
         <tbody>
           {% for sp in site.data.sponsors %}
             {% capture sponsor_class %}level-{{sp.level}} sponsor{% endcapture %}
-            <tr class="{{sponsor_class}}">
+            <tr class="{{sponsor_class}} hide-on-small-only">
               <td class="col-logo">
                 {% if sp.logo %}
                   <div class="logo">
@@ -52,6 +52,43 @@ subtitle: These are the companies and individuals contributing a monthly amount 
               </td>
               <td class="since">
                 {{sp.since}}
+              </td>
+            </tr>
+            <tr class="{{sponsor_class}} hide-on-med-and-up">
+              <td class="sponsor-mobile">
+                <div class="row">
+                  <div class="col s2 logo-container">
+                    {% if sp.logo %}
+                      <div class="logo">
+                        {% if sp.url %}
+                          <a href="{{sp.url}}" target="_blank">
+                            {% img '{{ assets[sp.logo].filename }}' %}
+                          </a>
+                        {% else %}
+                          {% img '{{ assets[sp.logo].filename }}' %}
+                        {% endif %}
+                      </div>
+                    {% else %}
+                      &nbsp;
+                    {% endif %}
+                  </div>
+                  <div class="col s6">
+                    {% if sp.url %}
+                      <a href="{{sp.url}}" target="_blank">
+                        {{sp.name}}
+                      </a>
+                    {% else %}
+                      {{sp.name}}
+                    {% endif %}
+                    <div>
+                      {{sp.since}}
+                     </div>
+                  </div>
+                  <div class="col s4 right-align">
+                    <div>${{sp.this_month}}</div>
+                    <div>${{sp.all_time}}</div>
+                  </div>
+                </div>
               </td>
             </tr>
           {% endfor %}
